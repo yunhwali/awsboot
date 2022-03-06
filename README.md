@@ -57,3 +57,10 @@ public class BaseTimeEntity {
 - @MappedSuperClass - 사용시 객체를 다른 entity 객체가 상속 받았을 때, BaseTime entity에 있는 attribute들을 컬럼으로 인식하도록 해준다. (안넣으면 인식못함)
 - @EntityListeners(AuditingLinstener.class) - BaseTimeEntity에 Auditing 기능을 포함시키는 역할을 한다.
 위 두가지 외, 실제 JpaAuditing을 사용하고자 할 때는 Application 메인클래스에 @EnableJpaAuditing 를 추가해주어야만 적용된다.
+
+##### Annotation
+> @Enumerated(EnumType.STRING)
+* JPA로 데이터베이스에 저장할 때 Enum값을 어떤 형태로 저장할지를 결정함.
+* 기본적으로는 int로 된 숫자가 저장됨
+* 숫자로 저장되면 데이터베이스로 확인할때 알기가 힘듦
+* 그래서 문자열 (EnumType.STRING) 으로 저장될 수 있도록 선언.

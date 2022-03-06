@@ -1,12 +1,27 @@
 {{>layout/header}}
-	<h1>스프링 부트로 시작하는 웹 서비스 </h1>
+	<h1>스프링 부트로 시작하는 웹 서비스 ver.2 </h1>
 	<div class="col-md-12">
+		<!--로그인영역-->
 		<div class="row">
 			<div class="col-md-6">
-				<a href="/posts/save" role="button" class="btn btn-primary" > 글 등록 </a>
+				<a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+				<!-- # : if 의 역할을 함. 있으면 true 없으면 false -->
+				{{#userName}}
+					Logged in as : <span id="user">{{userName}}</span>
+					<!-- /logout : spring security 에서 기본적으로 제공해줌. 변경시에는 SecurityConfig 클래스에서 수정가능 -->
+					<a href="/logout" class="btn btn-info active" role="button">Logout</a>
+				{{/userName}}
+				<!-- ^ : else 의 역할을 함.-->
+				{{^userName}}
+					<a href="/oauth2/authorization/google" class="btn btn-success active" role="button">
+						Google Login
+					</a>
+				{{/userName}}
 			</div>
 		</div>
 		<br/>
+
+		<!--목록 출력 영역-->
 		<table class="table table-horizontal table-bordered">
 			<thead class="thead-strong">
 				<tr>
